@@ -3,8 +3,14 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <com.yang.mydouban.ui.views.ImageSlideshow
-        android:id="@+id/sld_banner"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swp_home"
         android:layout_width="match_parent"
-        android:layout_height="220dp"/>
+        android:layout_height="match_parent">
+        <com.yang.mydouban.ui.views.ImageSlideshow
+            android:id="@+id/sld_banner"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
 </LinearLayout>

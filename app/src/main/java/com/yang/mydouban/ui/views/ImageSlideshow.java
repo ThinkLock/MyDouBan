@@ -107,6 +107,13 @@ public class ImageSlideshow extends FrameLayout {
         imageTitleBeanList.add(imageTitleBean);
     }
 
+    //清空图片，刷新使用
+    public void clearUp(){
+        if(imageTitleBeanList!=null) {
+            imageTitleBeanList.clear();
+        }
+    }
+
     // 添加图片和标题
     public void addImageTitle(String imageUrl, String title) {
         ImageTitleBean imageTitleBean = new ImageTitleBean();

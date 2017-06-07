@@ -4,4 +4,6 @@
     <string name="tab_movie">电影</string>
     <string name="tab_book">图书</string>
     <string name="tab_me">我的</string>
+
+    <string name="poor_network">未连接网络</string>
 </resources>
