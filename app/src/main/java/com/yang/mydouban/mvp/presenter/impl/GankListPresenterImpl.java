@@ -7,6 +7,7 @@ import com.yang.mydouban.mvp.ApiCompleteListener;
 import com.yang.mydouban.mvp.model.IGankListModel;
 import com.yang.mydouban.mvp.model.impl.GankListModelImpl;
 import com.yang.mydouban.mvp.presenter.IGankListPresenter;
+import com.yang.mydouban.mvp.view.IGankListView;
 import com.yang.mydouban.mvp.view.IHomeDataView;
 import com.yang.mydouban.utils.NetworkUtils;
 
@@ -16,9 +17,9 @@ import com.yang.mydouban.utils.NetworkUtils;
 
 public class GankListPresenterImpl implements IGankListPresenter,ApiCompleteListener{
     private IGankListModel mGankListModel;
-    private IHomeDataView mHomeDataView;
+    private IGankListView mHomeDataView;
 
-    public GankListPresenterImpl(IHomeDataView view){
+    public GankListPresenterImpl(IGankListView view){
         mHomeDataView = view;
         mGankListModel = new GankListModelImpl();
     }

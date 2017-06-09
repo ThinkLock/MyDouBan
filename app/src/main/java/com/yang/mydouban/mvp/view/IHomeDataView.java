@@ -11,5 +11,7 @@ public interface IHomeDataView {
 
     void hideProgress();
 
-    void refreshData(Object result);
+    void refreshData(Object result,String type);
+
+    void refreshZhihuaDaily(Object result);
 }

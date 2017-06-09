@@ -16,11 +16,12 @@ import com.yang.mydouban.base.BaseActivity;
 import com.yang.mydouban.ui.fragments.HomeFragment;
 import com.yang.mydouban.ui.fragments.MovieFragment;
 import com.yang.mydouban.R;
+import com.yang.mydouban.ui.views.NoScrollViewPager;
 
 public class MainActivity extends BaseActivity {
 
 
-    private ViewPager mViewPager;
+    private NoScrollViewPager mViewPager;
     private TabLayout mTabLayout;
     private MyViewPagerAdapter mAdapter;
 
@@ -47,8 +48,9 @@ public class MainActivity extends BaseActivity {
         setTabs(mTabLayout,this.getLayoutInflater(),TAB_TITLES,TAB_IMGS);
 
         mAdapter = new MyViewPagerAdapter(getSupportFragmentManager());
-        mViewPager = (ViewPager) findViewById(R.id.tab_content);
+        mViewPager = (NoScrollViewPager) findViewById(R.id.tab_content);
         mViewPager.setAdapter(mAdapter);
+        mViewPager.setScroll(false);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
     }

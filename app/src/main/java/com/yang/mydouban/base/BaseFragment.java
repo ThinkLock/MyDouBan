@@ -16,33 +16,44 @@ import butterknife.ButterKnife;
 public abstract class BaseFragment extends Fragment {
 
     protected final String TAG = getClass().getName();
-    protected View mRootView;
+    /** Fragment当前状态是否可见 */
+    protected boolean isVisible;
 
-    @Nullable
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        initRootView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, mRootView);
-        initEvents();
-        initData(savedInstanceState == null);
-        return mRootView;
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        if(getUserVisibleHint()) {
+            isVisible = true;
+            onVisible();
+        } else {
+            isVisible = false;
+            onInvisible();
+        }
     }
 
-    /**
-     * 初始化根布局
-     *
-     * @return View 视图
-     */
-    protected abstract void initRootView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
 
     /**
-     * 初始化监听事件等
+     * 可见
      */
-    protected abstract void initEvents();
+    protected void onVisible() {
+        lazyLoad();
+    }
+
 
     /**
-     * 加载数据
-     * @param isSavedNull
+     * 不可见
      */
-    protected abstract void initData(boolean isSavedNull);
+    protected void onInvisible() {
+
+
+    }
+
+
+    /**
+     * 延迟加载
+     * 子类必须重写此方法
+     */
+    protected abstract void lazyLoad();
 }
