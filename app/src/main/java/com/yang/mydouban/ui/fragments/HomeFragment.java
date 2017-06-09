@@ -2,6 +2,7 @@ package com.yang.mydouban.ui.fragments;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -27,6 +28,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import jp.wasabeef.recyclerview.animators.LandingAnimator;
 
 /**
  * Created by fengzhaoyang_i on 2017/6/6.
@@ -88,6 +90,7 @@ public class HomeFragment extends BaseFragment implements IHomeDataView,SwipeRef
             mTopStoriesAdapter = new TopStoriesListAdapter(getActivity());
             mRcvZHDaily.setLayoutManager(layoutManager);
             mRcvZHDaily.setAdapter(mTopStoriesAdapter);
+            mRcvZHDaily.setItemAnimator(new LandingAnimator());
         }catch (Throwable e){
             e.printStackTrace();
         }
@@ -150,7 +153,9 @@ public class HomeFragment extends BaseFragment implements IHomeDataView,SwipeRef
     public void refreshZhihuaDaily(Object result) {
         if(result instanceof ZHDailyListResult){
             mTopStoriesAdapter.setListData(((ZHDailyListResult) result).getTop_stories());
-            mTopStoriesAdapter.notifyDataSetChanged();
+            for(int i=0;i<((ZHDailyListResult) result).getTop_stories().size();i++) {
+                mTopStoriesAdapter.notifyItemChanged(i);
+            }
         }
     }
 
