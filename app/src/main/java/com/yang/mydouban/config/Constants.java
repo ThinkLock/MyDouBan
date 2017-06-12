@@ -18,4 +18,8 @@ public class Constants {
 
     //知乎日报
     public static final String ZH_URL = "http://news-at.zhihu.com/api/4/news/";
+
+
+    ///Intent
+    public static final String INTENT_SOTRY_ID = "StoryID";
 }

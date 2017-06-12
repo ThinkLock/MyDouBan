@@ -49,6 +49,9 @@ public class TopStoriesListAdapter extends RecyclerView.Adapter<TopStoriesListAd
         return mData.size();
     }
 
+    public ZHDailyListResult.TopStories getItem(int position){
+        return mData.get(position);
+    }
 
     public void setListData(List<ZHDailyListResult.TopStories> mData) {
         this.mData = mData;

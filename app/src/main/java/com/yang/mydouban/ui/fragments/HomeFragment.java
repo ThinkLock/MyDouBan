@@ -1,5 +1,6 @@
 package com.yang.mydouban.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -16,9 +17,11 @@ import com.yang.mydouban.base.BaseFragment;
 import com.yang.mydouban.been.GankListResult;
 import com.yang.mydouban.been.ZHDailyListResult;
 import com.yang.mydouban.config.Constants;
+import com.yang.mydouban.listeners.RecyclerViewClickListener;
 import com.yang.mydouban.mvp.presenter.impl.GankListPresenterImpl;
 import com.yang.mydouban.mvp.presenter.impl.HomeDataPresenterImpl;
 import com.yang.mydouban.mvp.view.IHomeDataView;
+import com.yang.mydouban.ui.activitys.StoryDetailActivity;
 import com.yang.mydouban.ui.adapters.TopStoriesListAdapter;
 import com.yang.mydouban.ui.views.ImageSlideshow;
 import com.yang.mydouban.utils.ToastUtils;
@@ -51,13 +54,9 @@ public class HomeFragment extends BaseFragment implements IHomeDataView,SwipeRef
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        try {
-            mRootView = (View) inflater.inflate(R.layout.fragment_home, container, false);
-            isPrepared = true;
-            lazyLoad();
-        }catch (Throwable e){
-            e.printStackTrace();
-        }
+        mRootView = (View) inflater.inflate(R.layout.fragment_home, container, false);
+        isPrepared = true;
+        lazyLoad();
         return mRootView;
     }
 
@@ -72,28 +71,39 @@ public class HomeFragment extends BaseFragment implements IHomeDataView,SwipeRef
 
 
     private void initEvents() {
-        try {
-            mImageSlideshow = (ImageSlideshow) mRootView.findViewById(R.id.sld_banner);
-            swipe = (SwipeRefreshLayout) mRootView.findViewById(R.id.swp_home);
-            homeDataPresenter = new HomeDataPresenterImpl(this);
-            swipe.setOnRefreshListener(this);
-            mImageSlideshow.setDelay(5*1000);
-            mImageSlideshow.setOnItemClickListener(new ImageSlideshow.OnItemClickListener() {
-                @Override
-                public void onItemClick(View view, int position) {
+        mImageSlideshow = (ImageSlideshow) mRootView.findViewById(R.id.sld_banner);
+        swipe = (SwipeRefreshLayout) mRootView.findViewById(R.id.swp_home);
+        homeDataPresenter = new HomeDataPresenterImpl(this);
+        swipe.setOnRefreshListener(this);
+        mImageSlideshow.setDelay(5*1000);
+        mImageSlideshow.setOnItemClickListener(new ImageSlideshow.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
 
-                }
-            });
-            layoutManager = new LinearLayoutManager(getActivity());
-            layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-            mRcvZHDaily = (RecyclerView) mRootView.findViewById(R.id.rec_top_stories);
-            mTopStoriesAdapter = new TopStoriesListAdapter(getActivity());
-            mRcvZHDaily.setLayoutManager(layoutManager);
-            mRcvZHDaily.setAdapter(mTopStoriesAdapter);
-            mRcvZHDaily.setItemAnimator(new LandingAnimator());
-        }catch (Throwable e){
-            e.printStackTrace();
-        }
+            }
+        });
+        layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRcvZHDaily = (RecyclerView) mRootView.findViewById(R.id.rec_top_stories);
+        mTopStoriesAdapter = new TopStoriesListAdapter(getActivity());
+        mRcvZHDaily.setLayoutManager(layoutManager);
+        mRcvZHDaily.setAdapter(mTopStoriesAdapter);
+        mRcvZHDaily.setItemAnimator(new LandingAnimator());
+        mRcvZHDaily.addOnItemTouchListener(new RecyclerViewClickListener(getActivity(), new RecyclerViewClickListener.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                //跳转详情页面
+                ZHDailyListResult.TopStories item = mTopStoriesAdapter.getItem(position);
+                Intent intent = new Intent(getActivity(), StoryDetailActivity.class);
+                intent.putExtra(Constants.INTENT_SOTRY_ID, item.getId());
+                getActivity().startActivity(intent);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                ToastUtils.showShort(""+position);
+            }
+        }));
     }
 
     private void initData() {

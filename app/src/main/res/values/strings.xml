@@ -6,4 +6,12 @@
     <string name="tab_me">我的</string>
 
     <string name="poor_network">未连接网络</string>
+
+    <!-- 详情界面菜单 -->
+    <string name="menu_share">分享</string>
+    <string name="menu_star">收藏</string>
+    <string name="menu_stared">已收藏</string>
+    <string name="menu_comment">评论</string>
+    <string name="menu_like">点赞</string>
+    <string name="menu_liked">已赞</string>
 </resources>
