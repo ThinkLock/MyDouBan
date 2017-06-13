@@ -6,6 +6,7 @@
     <string name="tab_me">我的</string>
 
     <string name="poor_network">未连接网络</string>
+    <string name="object_is_null">返回结果为null</string>
 
     <!-- 详情界面菜单 -->
     <string name="menu_share">分享</string>

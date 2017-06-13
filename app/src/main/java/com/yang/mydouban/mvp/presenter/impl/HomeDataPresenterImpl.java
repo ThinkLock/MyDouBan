@@ -49,6 +49,7 @@ public class HomeDataPresenterImpl implements IHomeDataPresenter,ApiHomeComplete
 
     @Override
     public void getHomeGankData(String type, int count, int page) {
+        //TODO 抽象省去这部分代码的重复实现
         if(!NetworkUtils.isConnected(MyApplication.getApplication())){
             iHomeDataView.hideProgress();
             iHomeDataView.showMessage(MyApplication.getApplication().getString(R.string.poor_network));

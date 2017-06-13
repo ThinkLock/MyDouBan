@@ -12,6 +12,6 @@ import rx.Observable;
 
 public interface IZHStoryDetailService {
 
-    @GET("{id}")
+    @GET("news/{id}")
     Observable<ZHStoryDetailResult> getStoryDetail(@Path("id") int id);
 }

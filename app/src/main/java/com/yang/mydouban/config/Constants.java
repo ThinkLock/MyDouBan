@@ -17,7 +17,7 @@ public class Constants {
     public static final String FLAG_Recommend = "瞎推荐";
 
     //知乎日报
-    public static final String ZH_URL = "http://news-at.zhihu.com/api/4/news/";
+    public static final String ZH_URL = "http://news-at.zhihu.com/api/4/";
 
 
     ///Intent

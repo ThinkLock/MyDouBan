@@ -11,6 +11,6 @@ import rx.Observable;
 
 public interface IZHDailyListService {
 
-    @GET("latest")
+    @GET("news/latest")
     Observable<ZHDailyListResult> getZHDailyList();
 }

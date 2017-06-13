@@ -25,9 +25,9 @@ public class GankListPresenterImpl implements IGankListPresenter,ApiCompleteList
     }
 
     @Override
-    public void onCompleted(Object reult) {
-        if(reult instanceof GankListResult){
-            mHomeDataView.refreshData(reult);
+    public void onCompleted(Object result) {
+        if(result instanceof GankListResult){
+            mHomeDataView.refreshData(result);
         }
         mHomeDataView.hideProgress();
     }

@@ -6,7 +6,7 @@ package com.yang.mydouban.mvp;
 
 public interface ApiCompleteListener {
 
-    void onCompleted(Object reult);
+    void onCompleted(Object result);
 
     void onFailed(String msg);
 }

@@ -1,5 +1,7 @@
 package com.yang.mydouban.mvp.model.impl;
 
+import com.yang.mydouban.MyApplication;
+import com.yang.mydouban.R;
 import com.yang.mydouban.api.ServiceFactory;
 import com.yang.mydouban.api.services.IGankListService;
 import com.yang.mydouban.api.services.IZHDailyListService;
@@ -69,7 +71,7 @@ public class HomeDataModelImpl implements IHomeDataModel{
                         if(zhDailyListResult!=null){
                             listener.onCompleted(zhDailyListResult);
                         }else{
-                            listener.onFailed("result is null");
+                            listener.onFailed(MyApplication.getApplication().getString(R.string.object_is_null));
                         }
                     }
                 });

@@ -77,12 +77,21 @@
             android:id="@+id/content_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <WebView
-                android:id="@+id/web_content"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-
+                android:layout_height="match_parent">
+                <ProgressBar
+                    android:visibility="gone"
+                    android:id="@+id/psb_loading"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <WebView
+                    android:id="@+id/web_content"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </FrameLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
