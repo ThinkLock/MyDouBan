@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             app:contentScrim="?attr/colorPrimary"
             app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
 
             <ImageView
                 android:id="@+id/iv_detail_top"
@@ -81,7 +81,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ProgressBar
-                    android:visibility="gone"
                     android:id="@+id/psb_loading"
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
