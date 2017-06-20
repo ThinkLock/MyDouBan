@@ -44,6 +44,7 @@ public class HomeFragment extends BaseFragment implements IHomeDataView,SwipeRef
     private SwipeRefreshLayout swipe;
     private ImageSlideshow mImageSlideshow;
     private RecyclerView mRcvZHDaily;
+    private RecyclerView mRcvZHDailyThemes;
     private LinearLayoutManager layoutManager;
     private TopStoriesListAdapter mTopStoriesAdapter;
     /**

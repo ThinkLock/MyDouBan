@@ -69,6 +69,11 @@ public class HomeDataPresenterImpl implements IHomeDataPresenter,ApiHomeComplete
     }
 
     @Override
+    public void getHomeZHThemeData() {
+
+    }
+
+    @Override
     public void cancelLoading() {
         homeDataModel.cancelLoading();
     }

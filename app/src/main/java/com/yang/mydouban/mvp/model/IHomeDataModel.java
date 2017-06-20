@@ -13,5 +13,7 @@ public interface IHomeDataModel {
 
     void loadHomeZHData(ApiCompleteListener listener);
 
+    void loadHomeZHTheme(ApiCompleteListener listener);
+
     void cancelLoading();
 }

@@ -14,4 +14,6 @@ public interface IHomeDataView {
     void refreshData(Object result,String type);
 
     void refreshZhihuaDaily(Object result);
+
+    void refreshZhiHuThemes(Object result);
 }

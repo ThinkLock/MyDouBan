@@ -10,6 +10,8 @@ public interface IHomeDataPresenter {
 
     void getHomeZHData();
 
+    void getHomeZHThemeData();
+
     void cancelLoading();
 
 }

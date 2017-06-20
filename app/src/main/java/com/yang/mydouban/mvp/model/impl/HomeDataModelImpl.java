@@ -5,8 +5,10 @@ import com.yang.mydouban.R;
 import com.yang.mydouban.api.ServiceFactory;
 import com.yang.mydouban.api.services.IGankListService;
 import com.yang.mydouban.api.services.IZHDailyListService;
+import com.yang.mydouban.api.services.IZHDailyThemeService;
 import com.yang.mydouban.been.GankListResult;
 import com.yang.mydouban.been.ZHDailyListResult;
+import com.yang.mydouban.been.ZHDailyThemeResult;
 import com.yang.mydouban.config.Constants;
 import com.yang.mydouban.mvp.ApiCompleteListener;
 import com.yang.mydouban.mvp.ApiHomeCompleteListener;
@@ -76,6 +78,30 @@ public class HomeDataModelImpl implements IHomeDataModel{
                     }
                 });
 
+    }
+
+    @Override
+    public void loadHomeZHTheme(ApiCompleteListener listener) {
+        IZHDailyThemeService izhDailyThemeService = ServiceFactory.createService(Constants.ZH_URL,IZHDailyThemeService.class);
+        izhDailyThemeService.getThemesList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ZHDailyThemeResult>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onNext(ZHDailyThemeResult zhDailyThemeResult) {
+
+                    }
+                });
     }
 
     @Override
